@@ -22,4 +22,5 @@ Institutional biases themselves are a matter as well, such as "self-supplied ret
 The Texas case study is also not recent, and it's likely trends have changed in regards to the strength academic achievement has on retention.
 
 Technical Documentation: https://collegescorecard.ed.gov/assets/InstitutionDataDocumentation.pdf
+
 US Department of Education: https://collegescorecard.ed.gov/data/
