@@ -20,3 +20,7 @@ When comparing "loans", I had a tendency to loop in those receiving Pell Grants 
 Institutional biases themselves are a matter as well, such as "self-supplied retention/completion rates", as well as if the university supplied transfer rates to begin with. This included "award status" too.
 
 The Texas case study is also not recent, and it's likely trends have changed in regards to the strength academic achievement has on retention.
+
+Technical Documentation: https://collegescorecard.ed.gov/assets/InstitutionDataDocumentation.pdf
+
+US Department of Education: https://collegescorecard.ed.gov/data/
