@@ -12,21 +12,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 These are the tests done for the various graphs for the Texas case study. They include: t-tests for differences between means, and Chi-squared tests to test whether the column variables are "significantly associated" with each other. 
 
-```{r cars}
+```{r Texas}
 Texas = read.csv("Texas_retention.csv")
 t.test(Overall.GPA ~ Retention, data = Texas)
+#mean in group Not retained     mean in group Retained 
+                  #3.023611                   3.113918 #p-value < 2.2e-16
 t.test(High.School.GPA ~ Retention, data = Texas)
+#mean in group Not retained     mean in group Retained 
+                  #3.340696                   3.338728 #p-value = 0.8433
 chisq.test(table(Texas$Change.in.GPA,Texas$Retention))
+#p-value = 0.2266
 chisq.test(table(Texas$Received.Financial.Aid,Texas$Retention))
-
+#p-value = 3.376e-05
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
