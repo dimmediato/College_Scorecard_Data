@@ -1,0 +1,32 @@
+---
+title: "Statistical Tests for Python Project"
+output: html_document
+date: "2024-02-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Texas P Values
+
+These are the tests done for the various graphs for the Texas case study. They include: t-tests for differences between means, and Chi-squared tests to test whether the column variables are "significantly associated" with each other. 
+
+```{r cars}
+Texas = read.csv("Texas_retention.csv")
+t.test(Overall.GPA ~ Retention, data = Texas)
+t.test(High.School.GPA ~ Retention, data = Texas)
+chisq.test(table(Texas$Change.in.GPA,Texas$Retention))
+chisq.test(table(Texas$Received.Financial.Aid,Texas$Retention))
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
