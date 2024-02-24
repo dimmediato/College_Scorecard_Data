@@ -1,0 +1,83 @@
+---
+title: "Statistical Tests for Python Project"
+output: html_document
+date: "2024-02-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Texas P Values
+
+These are the tests done for the various graphs for the Texas case study. They include: t-tests for differences between means, and Chi-squared tests to test whether the column variables are "significantly associated" with each other. 
+
+```{r Texas}
+Texas =  read.csv("~/NYCDSA/First Project/Git_Workspace/College_Scorecard_Data/Data/Texas_Retention.csv")
+t.test(Overall.GPA ~ Retention, data = Texas)
+#mean in group Not retained     mean in group Retained 
+                  #3.023611                   3.113918 #p-value < 2.2e-16
+t.test(High.School.GPA ~ Retention, data = Texas)
+#mean in group Not retained     mean in group Retained 
+                  #3.340696                   3.338728 #p-value = 0.8433
+chisq.test(table(Texas$Change.in.GPA,Texas$Retention))
+#p-value = 0.2266
+chisq.test(table(Texas$Received.Financial.Aid,Texas$Retention))
+#p-value = 3.376e-05
+```
+```{r Scoreboard Income Anovas (Ignore?)}
+Scorecard$AVGFAMINC = as.numeric(as.character(Scorecard$AVGFAMINC))
+Scorecard$FAMINC_IND = as.numeric(as.character(Scorecard$FAMINC_IND))
+Scorecard$RET_FT4_POOLED = as.numeric(as.character(Scorecard$RET_FT4_POOLED))
+#Scorecard$RET_FT4_POOLED = label_percent()(Scorecard$RET_FT4_POOLED)
+#Anova(lm(C150_4_POOLED  ~ AVGFAMINC, data = Scorecard)) #P value < 2.2e-16
+Anova(lm(RET_FT4_POOLED  ~ AVGFAMINC, data = Scorecard)) #P value < 2.2e-16
+#Anova(lm(C150_4_POOLED  ~ FAMINC_IND, data = Scorecard)) #P value 0.07029 
+Anova(lm(RET_FT4_POOLED  ~ FAMINC_IND, data = Scorecard)) #P value 0.006934
+```
+## Beta Regression For Family Individual Income and Retention
+
+Beta regression is used when the dependent variable, y, is assumed 0,1 value.
+```{r Scorecard Income Beta Regression/Individual}
+Scorecard = read.csv("~/NYCDSA/First Project/Git_Workspace/College_Scorecard_Data/Data/Trimmed_Scorecard.csv")
+Scorecard$PCTFLOAN = as.numeric(as.character(Scorecard$PCTFLOAN))
+Scorecard$RET_FT4_POOLED = as.numeric(as.character(Scorecard$RET_FT4_POOLED))
+Scorecard$AVGFAMINC = as.numeric(as.character(Scorecard$AVGFAMINC))
+Scorecard$FAMINC_IND = as.numeric(as.character(Scorecard$FAMINC_IND))
+#summary(gamlss(C150_4_POOLED ~ FAMINC_IND, data=na.omit(Scorecard)))
+#T value -2.298    P value 0.0216
+summary(gamlss(RET_FT4_POOLED ~ FAMINC_IND, data=na.omit(Scorecard)))
+#T value 2.655 P value 0.00795
+```
+## Beta Regression For Family Average Income and Retention
+```{r Scorecard Income Beta Regression/Family}
+#summary(gamlss(C150_4_POOLED ~ AVGFAMINC, data=na.omit(Scorecard)))
+#T value 17.18   P value <2e-16
+summary(gamlss(RET_FT4_POOLED ~ AVGFAMINC, data=na.omit(Scorecard)))
+#T value 21.59   P value <2e-16
+```
+## Beta Regression for Tuition and Retention
+
+Tuition cost being for those from out of state and instate.
+```{r Scorecard Tuition}
+Scorecard$Instate_Tuition = as.numeric(as.character(Scorecard$Instate_Tuition))
+Scorecard$Outstate_Tuition = as.numeric(as.character(Scorecard$Outstate_Tuition))
+summary(gamlss(RET_FT4_POOLED ~ Instate_Tuition, data=na.omit(Scorecard)))
+#T value 24.31   P value <2e-16
+summary(gamlss(RET_FT4_POOLED ~ Outstate_Tuition, data=na.omit(Scorecard)))
+#T value 32.17   P value <2e-16
+```
+## Beta Regression for SAT Scores and Retention
+SAT score averages for all. 
+
+```{r Scorecard SAT Scores}
+Scorecard$SAT_AVG_ALL = as.numeric(as.character(Scorecard$SAT_AVG_ALL))
+summary(gamlss(RET_FT4_POOLED ~ SAT_AVG_ALL, data=na.omit(Scorecard)))
+#T Value 27.923   P Value <2e-16
+```
+
+
+
+
+
+
