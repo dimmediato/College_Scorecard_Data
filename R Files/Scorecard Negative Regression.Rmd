@@ -64,6 +64,11 @@ Scorecard$UG25ABV = as.numeric(as.character(Scorecard$UG25ABV))
 summary(gamlss(RET_FT4_POOLED ~ UG25ABV, data=na.omit(Scorecard)))
 #-12.93   <2e-16
 ```
+```{r}
+Scorecard$C150_4_POOLED = as.numeric(as.character(Scorecard$C150_4_POOLED))
+summary(gamlss(RET_FT4_POOLED ~ C150_4_POOLED, data=na.omit(Scorecard)))
+```
+
 
 
 
