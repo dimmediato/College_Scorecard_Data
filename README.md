@@ -17,7 +17,7 @@ The possibilities are endless when it comes to variability in academic persisten
 For example, the College Scorecard used only took the "most recent" dataset, but it technically goes back as far as far as 1996. Perhaps year matters more? 
 Also, I combined L4 schools (that is, institutions that are less than four years) with the regular four-year institutions. There is a likelihood that this institution difference affects student retention. 
 When comparing "loans", I had a tendency to loop in those receiving Pell Grants with those receiving loans in general. It is more than likely that the two affect retention differently. 
-Institutional biases themselves are a matter as well, such as "self-supplied retention/completion rates", as well as if the university supplied transfer rates to begin with. This included "award status" too.
+Institutional biases themselves are a matter as well, such as "self-supplied scores/rates", as well as lack of values to begin with. It'd be interesting to seperate the values by what is supplied if completion is used instead, such as by demographics or by those who received PELL grants. 
 
 The Texas case study is also not recent, and it's likely trends have changed in regards to the strength academic achievement has on retention.
 
